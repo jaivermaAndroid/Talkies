@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    >
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/app_theme_yellow_color"
+        android:fontFamily="@font/sf_pro_text_medium"
+        android:textSize="16sp"
+        android:text="We add at least 2 new content to our catalog every week so that you are never bored." />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/upcoming_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"/>
+
+
+
+</LinearLayout>

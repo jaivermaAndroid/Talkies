@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imageView_info"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_gravity="right"
+            app:srcCompat="@drawable/app_logo" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Talkies™ for Android "
+            android:textColor="@color/app_theme_yellow_color"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Version 3.0"
+            android:onClick="onClick"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+
+
+     </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Talkies™ for Android © 2020 Talkiesapp.com, Swayam Prabha Entertainment &amp; Productions or its affiliates. All rights reserved. Talkies and Talkies logo are trademarks of Swayam Prabha Entertainment &amp; Productions or its affiliates."
+            android:onClick="onClick"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="We thank you for the support &amp; contributions"
+            android:textColor="@color/app_theme_yellow_color"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Shivam Music, Mangaluru"
+            android:onClick="onClick"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Namma TV, Mangaluru"
+            android:onClick="onClick"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Thamma Laxman, Mangaluru"
+            android:onClick="onClick"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Proudly built by"
+            android:onClick="onClick"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Swayam Prabha Technology Solutions"
+            android:textColor="@color/app_theme_yellow_color"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Contributors: Nikhil Acharya, Pratheek Hegde, Rahul Kumar Singh, Manoj Bhat, and Sandeep Prabhu."
+            android:onClick="onClick"
+            android:textColor="@color/white"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textSize="16sp"
+            android:text="Follow Us"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:textColor="@color/white"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/follow_us_insta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical"
+                android:background="@drawable/yellow_dot_big_bg"
+
+                >
+                <ImageView
+                    android:id="@+id/imageView_insta"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@drawable/instagram" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/follow_us_facebook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical"
+                android:background="@drawable/yellow_dot_big_bg"
+
+                >
+                <ImageView
+                    android:id="@+id/imageView_facebook"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/yellow_dot_big_bg"
+                    app:srcCompat="@drawable/facebook" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/follow_us_twitter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical"
+                android:background="@drawable/yellow_dot_big_bg"
+
+                >
+                <ImageView
+                    android:id="@+id/imageView_twitter"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/yellow_dot_big_bg"
+                    app:srcCompat="@drawable/twitter" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/follow_us_youtube"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:orientation="vertical"
+                android:background="@drawable/yellow_dot_big_bg"
+
+                >
+                <ImageView
+                    android:id="@+id/imageView_you_tube"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/yellow_dot_big_bg"
+                    app:srcCompat="@drawable/youtube" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_made_in_india"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:text="Made in India 🇮🇳"
+            android:gravity="center|bottom"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:textColor="@android:color/white"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

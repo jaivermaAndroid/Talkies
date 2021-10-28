@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="58dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_text_regular"
+            android:text="Please enter the phone number associated with your account to recieve an otp for resetting your PIN"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+            <com.hbb20.CountryCodePicker
+                app:ccp_hintExampleNumber="true"
+                android:id="@+id/country_code_picker"
+                android:clickable="true"
+                android:focusable="true"
+                app:ccp_contentColor="@color/white"
+                app:ccp_showFlag="false"
+                android:background="@color/edt_bg"
+                app:ccp_showFullName="true"
+                app:ccp_showNameCode="true"
+                app:ccpDialog_textColor="@color/white"
+                app:ccpDialog_searchEditTextTint="@color/white"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:layout_height="40dp">
+
+            </com.hbb20.CountryCodePicker>
+
+            <EditText android:id="@+id/editTextPhoneLogin"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:inputType="phone"
+                android:textColor="@color/white"
+                android:textColorHint="@color/textColor_light_grey"
+                android:paddingLeft="8dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_edt_text"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:maxLength="10"
+                android:hint="Enter Mobile number"/>
+
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@color/app_theme_yellow_color"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Submit"/>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

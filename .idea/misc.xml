@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/drawable-anydpi/ic_fullscreen_close.xml" value="0.10520833333333333" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/drawable-anydpi/ic_fullscreen_open.xml" value="0.10520833333333333" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/drawable-hdpi/bg_otp_item.xml" value="0.1125" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/activity_login_signup_info.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/activity_login_with_pin.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/activity_otp_verification.xml" value="0.22" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/activity_reset_pin.xml" value="0.2" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/activity_reset_pin_mobile.xml" value="0.12" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/activity_signup.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/activity_welcome.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/exo_playback_control_view.xml" value="0.1" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_more.xml" value="0.1" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_my_purchase.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_notification.xml" value="0.292259083728278" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_notification_details.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_profile_detail_fragment.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_search.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_search_details.xml" value="0.1" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_second.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_subscription.xml" value="0.25" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/fragment_tab_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/home_child_horizontal_list_item.xml" value="0.1" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/home_recyclerview_verticle_list_item.xml" value="0.18" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/layout_more_details_item_details.xml" value="0.1" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/layout_subscription_card_item.xml" value="0.1" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/more_list_view.xml" value="0.20416666666666666" />
+        <entry key="..\:/Akash/talkies-native-android/app/src/main/res/layout/search_recycler_video_list_item.xml" value="0.22" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/info_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/help_bg_gradient"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView_back_sing_up_login_info"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="left"
+            android:layout_marginTop="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_action_back" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="58dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView_logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/app_logo" />
+
+            <TextView
+                android:id="@+id/tv_title_welcome4"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:text="Swayam Prabha Entertainment &amp; Productions"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                />
+
+
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginTop="100dp"
+            android:textSize="30sp"
+            android:fontFamily="@font/sf_pro_text_bold"
+            android:text="Get In Touch With Us"
+            android:textColor="@color/app_theme_yellow_color"
+            />
+        <TextView
+            android:id="@+id/tv_bottom_subtitle_welcome2"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sf_pro_text_regular"
+            android:textSize="16sp"
+            android:text="This is a backend driven message. It can be anything. Also the next line with email is also backend driven, including the email ID"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_dont_have_account"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:text="Submit your queries at "
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                />
+            <TextView
+                android:id="@+id/tv_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="talkies@spepindia.com"
+                android:onClick="onClick"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:textColor="@color/app_theme_yellow_color"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    </LinearLayout>
+    </RelativeLayout>

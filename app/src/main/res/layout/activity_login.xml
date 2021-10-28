@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/imageView_info"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        app:srcCompat="@drawable/info" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="58dp"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/app_logo" />
+
+        <TextView
+            android:id="@+id/tv_title_welcome4"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Swayam Prabha Entertainment &amp; Productions"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            />
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="32dp"
+           android:layout_marginTop="77dp"
+           android:orientation="horizontal">
+           <com.hbb20.CountryCodePicker
+               app:ccp_hintExampleNumber="true"
+               android:id="@+id/country_code_picker"
+               android:clickable="true"
+               android:focusable="true"
+               app:ccp_contentColor="@color/white"
+               app:ccp_showFlag="false"
+               android:background="@color/edt_bg"
+               app:ccp_showNameCode="false"
+               app:ccpDialog_textColor="@color/white"
+               app:ccpDialog_searchEditTextTint="@color/white"
+               android:layout_width="wrap_content"
+               android:fontFamily="@font/sf_pro_text_medium"
+               android:layout_height="40dp">
+
+           </com.hbb20.CountryCodePicker>
+
+           <EditText android:id="@+id/editTextPhoneLogin"
+               android:layout_width="match_parent"
+               android:layout_height="40dp"
+               android:inputType="phone"
+               android:textColor="@color/white"
+               android:textColorHint="@color/textColor_light_grey"
+               android:paddingLeft="8dp"
+               android:layout_marginTop="6dp"
+               android:layout_marginLeft="8dp"
+               android:background="@drawable/bg_edt_text"
+               android:fontFamily="@font/sf_pro_text_medium"
+               android:maxLength="10"
+               android:hint="Mobile number"/>
+
+
+       </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonLogin"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="@color/app_theme_yellow_color"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Login"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_or_login_using"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="19dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:textSize="16sp"-->
+<!--            android:fontFamily="@font/sf_pro_text_medium"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Or Login Using"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            />-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="0.2"-->
+<!--            android:layout_marginLeft="24dp"-->
+<!--            android:layout_marginRight="24dp"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal">-->
+<!--            <com.facebook.login.widget.LoginButton-->
+<!--                android:id="@+id/facebook_login_button"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:padding="15dp"-->
+<!--                android:fontFamily="@font/sf_pro_text_medium"-->
+<!--                android:layout_weight="1" />-->
+<!--            <com.google.android.gms.common.SignInButton-->
+<!--                android:id="@+id/google_sign_in_button"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:fontFamily="@font/sf_pro_text_medium"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="1"/>-->
+
+
+<!--        </LinearLayout>-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_dont_have_account"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:text="Don’t have an account? "
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                />
+            <TextView
+                android:id="@+id/tv_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:text="Sign Up"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:onClick="onClick"
+                android:textAlignment="center"
+                android:textColor="@color/app_theme_yellow_color"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_made_in_india"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_marginTop="120dp"
+        android:textSize="16sp"
+        android:layout_margin="16dp"
+        android:layout_gravity="center|bottom"
+        android:text="Made in India 🇮🇳"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+
+        android:textColor="@android:color/white"
+        />
+
+
+</RelativeLayout>

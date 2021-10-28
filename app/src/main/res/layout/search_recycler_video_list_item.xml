@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/black">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/textColor_light_grey"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/searchImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/app_logo"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:id="@+id/linear"
+            app:layout_constraintTop_toBottomOf="@+id/searchImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_medium"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:orientation="vertical">
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:id="@+id/searchResultTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25sp"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/sf_pro_text_medium"
+                        android:gravity="start"
+                        android:maxLines="1"
+                        android:text="@string/appe_teacher"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:id="@+id/talkiestype"
+                        android:layout_width="wrap_content"
+                        android:layout_height="25sp"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/sf_pro_text_medium"
+                        android:gravity="start"
+                        android:maxLines="1"
+                        android:text="Talkies Yakshagana"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/searchResultYear"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/sf_pro_text_medium"
+                        android:maxLines="1"
+                        android:text="@string/_2020"
+                        android:textColor="@color/app_theme_yellow_color"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="1dp"
+                        android:layout_weight="0.1"
+                        android:src="@drawable/doted_circle_small"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/searchResultDuration"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/sf_pro_text_medium"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="@string/_154_mins"
+                        android:textColor="@color/app_theme_yellow_color"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="1dp"
+                        android:layout_weight="0.1"
+                        android:src="@drawable/doted_circle_small"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/searchResultCertificate"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/sf_pro_text_medium"
+                        android:maxLines="1"
+                        android:text="@string/u_a"
+                        android:textColor="@color/app_theme_yellow_color"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/searchResultVideo_type_1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/sf_pro_text_medium"
+                        android:text="@string/appe_teacher_collection"
+                        android:textColor="@color/app_theme_yellow_color"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="1dp"
+                        android:layout_weight="0.1"
+                        android:src="@drawable/doted_circle_small"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/searchResultVideo_type_2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/sf_pro_text_medium"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="@string/comedy"
+                        android:textColor="@color/app_theme_yellow_color"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="1dp"
+                        android:layout_weight="0.1"
+                        android:src="@drawable/doted_circle_small"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/searchResultVideo_type_3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/sf_pro_text_medium"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="@string/drama"
+                        android:textColor="@color/app_theme_yellow_color"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            app:layout_constraintTop_toBottomOf="@+id/linear"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="7dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

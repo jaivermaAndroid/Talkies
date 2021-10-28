@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/black"
+    android:layout_height="match_parent">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/ll_edit_name_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:visibility="visible"
+                android:orientation="vertical">
+
+
+                <EditText android:id="@+id/editTextFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/textColor_light_grey"
+                    android:paddingLeft="8dp"
+                    android:maxLength="10"
+                    android:hint="Name"/>
+
+<!--                <EditText android:id="@+id/editTextLastName"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="44dp"-->
+<!--                    android:inputType="textPersonName"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textColorHint="@color/textColor_light_grey"-->
+<!--                    android:paddingLeft="8dp"-->
+<!--                    android:maxLength="10"-->
+<!--                    android:hint="Last Name"/>-->
+
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonSaveNameProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="24dp"
+                    android:background="@drawable/round_button_yellow"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible"
+                    android:fontFamily="@font/sf_pro_text_medium"
+                    android:text="Save"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/ll_purchase_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_contact_us_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+
+                <include layout="@layout/fragment_support"></include>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_about_us_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+
+
+                <include layout="@layout/fragment_about" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_bg_color"
+    android:scrollbars="vertical"
+    android:orientation="vertical">
+
+
+
+    <ScrollView
+        android:id="@+id/profileMainPage"
+        android:layout_width="match_parent"
+        android:scrollbars="vertical"
+        android:fillViewport="true"
+        android:visibility="visible"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="60dp"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.9"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_title_genre"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:fontFamily="@font/sf_pro_text_medium"
+                            android:text="Genre"
+                            android:textSize="16sp"
+                            android:textColor="@color/app_theme_yellow_color"
+                            />
+                        <TextView
+                            android:id="@+id/tv_title_genre_values_item_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:text="Email"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/sf_pro_text_medium"
+                            android:textSize="14sp"
+
+                            android:textColor="@color/white"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_title_staring"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:text="Starring"
+                            android:fontFamily="@font/sf_pro_text_medium"
+                            android:textSize="16sp"
+                            android:textColor="@color/app_theme_yellow_color"
+                            />
+
+
+
+                        <TextView
+                            android:id="@+id/tv_staring_value_item_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:text="Get The Latest Updates"
+                            android:textSize="14sp"
+
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/sf_pro_text_medium"
+                            android:textColor="@color/white"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_title_supporting_actors"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:text="Supporting actors"
+                            android:fontFamily="@font/sf_pro_text_medium"
+                            android:textSize="16sp"
+                            android:textColor="@color/app_theme_yellow_color"
+                            />
+                        <TextView
+                            android:id="@+id/tv_mypurchase_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:text="Current Plan - Talkies Retro"
+                            android:fontFamily="@font/sf_pro_text_medium"
+                            android:textSize="14sp"
+
+                            android:layout_marginTop="8dp"
+                            android:textColor="@color/white"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_title_audio_languages"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:text="Audio languages"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/sf_pro_text_medium"
+                            android:textColor="@color/app_theme_yellow_color"
+                            />
+                        <TextView
+                            android:id="@+id/tv_audio_labguage_value_item_d"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:text="Get in touch with our Help Center"
+                            android:textSize="14sp"
+
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/sf_pro_text_medium"
+                            android:textColor="@color/white"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_title_Subtitles"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:text="About Talkies"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/sf_pro_text_medium"
+                            android:textColor="@color/app_theme_yellow_color"
+                            />
+                        <TextView
+                            android:id="@+id/tv_Subtitles_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:text="Version: 1.9.7"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/sf_pro_text_medium"
+
+                            android:textColor="@color/white"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="0.8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_title_production_house"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:text="Production house"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/sf_pro_text_medium"
+                            android:textColor="@color/app_theme_yellow_color"
+                            />
+                        <TextView
+                            android:id="@+id/tv_tell_production_house_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.1"
+                            android:text="Ask Them to join Talkies"
+                            android:textSize="14sp"
+
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/sf_pro_text_medium"
+                            android:textColor="@color/white"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+
+
+</LinearLayout>

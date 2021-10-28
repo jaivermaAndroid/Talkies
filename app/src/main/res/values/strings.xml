@@ -1,0 +1,114 @@
+<resources>
+    <string name="app_name">Talkies</string>
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Hello Food!</string>
+    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+
+    <string name="slide_2_title">Movie Tickets</string>
+    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+
+    <string name="slide_4_title">World Travel</string>
+    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+
+    <string name="facebook_app_id">470084793784324</string>
+    <string name="fb_login_protocol_scheme">fb470084793784324</string>
+
+    <string name="home">Home</string>
+    <string name="shows">Shows</string>
+    <string name="yakshagana">Yakshagana</string>
+    <string name="others">Others</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="progress_dialog_title">Please wait</string>
+    <string name="movies">Movies</string>
+    <string name="buffering_string">Buffering&#8230;</string>
+    <string name="server_client_id">791967465283-2449ftthtfe74mi1ce9t4fj2dase85o7.apps.googleusercontent.com</string>
+    <string name="video_url">http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4</string>
+    <string name="app_id">240949526376</string>
+    <string name="play_video">Play Video</string>
+    <string name="pause_video">Pause Video</string>
+    <string name="resume_video">Resume Video</string>
+    <string name="video_title">Paul\'s Chromecast Video Stream</string>
+    <string name="content_type_mp4">mp4</string>
+    <string name="india">Made in India 🇮🇳</string>
+    <string name="mnumber">Mobile number</string>
+    <string name="existing_user">Existing user?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">Log In</string>
+    <string name="join">Join</string>
+    <string name="swayam"><![CDATA[Swayam Prabha Entertainment & Productions]]></string>
+    <string name="help">Help</string>
+    <string name="swayam_prabha_entertainment_amp_productions"><![CDATA[Swayam Prabha Entertainment & Productions]]></string>
+    <string name="don_t_account">Don’t have an account?</string>
+    <string name="enter_mobile_number">Enter Mobile number</string>
+    <string name="enter_pin">Enter PIN</string>
+    <string name="login">Login</string>
+    <string name="forgot_pin">Forgot PIN</string>
+    <string name="or">or</string>
+    <string name="login_with_otp">Login with OTP</string>
+    <string name="made_in_india">Made in India 🇮🇳</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="verify">Verify</string>
+    <string name="a_one_time_verification_code_has_been_sent_to_phone">A one time verification code has been sent to phone</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="_1234">1234</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="full_name">Full Name</string>
+    <string name="please_enter_a_valid_name_and_email_address_as_this_will_be_used_to_send_invoices_we_promise_to_keep_you_personal_information_100_secure_we_will_never_share_these_details_with_anyone">Please enter a valid Name and Email Address, as this will be used to send invoices. We promise to keep you personal information 100% secure. We will never share these details with anyone.</string>
+    <string name="email_address">Email address</string>
+    <string name="complete_profile">Complete Profile</string>
+    <string name="continue_watching">Continue Watching</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="notification">Notification</string>
+    <string name="my_devices">My Devices</string>
+    <string name="view_talkies_tv_devices">View Talkies TV devices</string>
+    <string name="contact_us">Contact us</string>
+    <string name="about_talkies">About Talkies</string>
+    <string name="version_1_9_7">Version: 1.9.7</string>
+    <string name="get_the_latest_updates">Get The Latest Updates</string>
+    <string name="my_purchase">My Purchase</string>
+    <string name="current_plan_talkies_retro">Current Plan - Talkies Retro</string>
+    <string name="get_in_touch_with_our_help_center">Get in touch with our Help Center</string>
+    <string name="tell_your_friends">Tell Your Friends</string>
+    <string name="ask_them_to_join_talkies">Ask Them to join Talkies</string>
+    <string name="logout">Logout</string>
+    <string name="u_a">U/A</string>
+    <string name="drama">Drama</string>
+    <string name="tullu">Tullu</string>
+    <string name="connect_tv">Connect TV</string>
+    <string name="watch_trailer">Watch Trailer</string>
+    <string name="cast_and_crew">Cast and Crew</string>
+    <string name="appe_teacher">Appe Teacher</string>
+    <string name="_2020">2020</string>
+    <string name="_154_mins">154 mins</string>
+    <string name="appe_teacher_collection">Appe Teacher Collection</string>
+    <string name="comedy">Comedy</string>
+    <string name="release_dates">Release Dates</string>
+    <string name="clear">Clear</string>
+    <string name="more">More</string>
+    <string name="video_category">Video Category</string>
+    <string name="malgudi_days">Malgudi days</string>
+    <string name="start_watching">Start Watching</string>
+    <string name="more_details">More Details</string>
+    <string name="dialog_message">Logout</string>
+    <string name="dialog_title">Are You Sure?</string>
+    <string name="pintxt">Please Enter the phone number associated with your account to recieve an otp for resetting your pin</string>
+</resources>

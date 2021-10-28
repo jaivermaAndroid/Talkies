@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout-->
+<!--    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:orientation="vertical"-->
+<!--    android:background="@color/app_bg_color"-->
+<!--    >-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="220dp"-->
+<!--        android:orientation="horizontal">-->
+<!--        <ImageView-->
+<!--            android:id="@+id/searchImage"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_margin="6dp"-->
+<!--            android:src="@drawable/app_logo"/>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="2dp"-->
+<!--            android:orientation="vertical">-->
+<!--            <TextView-->
+<!--                android:id="@+id/searchResultTitle"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="25sp"-->
+<!--                android:gravity="left"-->
+<!--                android:fontFamily="@font/sf_pro_text_medium"-->
+<!--                android:maxLines="1"-->
+<!--                android:text="Appe Teacher"-->
+<!--                android:layout_marginLeft="8dp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="16sp"/>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:layout_marginLeft="8dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/searchResultYear"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="2020"-->
+<!--                    android:fontFamily="@font/sf_pro_text_medium"-->
+<!--                    android:textColor="@color/app_theme_yellow_color"-->
+<!--                    android:textSize="16sp"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="1dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginStart="1dp"-->
+<!--                    android:layout_weight="0.1"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:src="@drawable/doted_circle_small"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/searchResultDuration"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="154 mins"-->
+<!--                    android:layout_marginLeft="8dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:fontFamily="@font/sf_pro_text_medium"-->
+<!--                    android:textColor="@color/app_theme_yellow_color"-->
+<!--                    android:textSize="14sp"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="1dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginStart="1dp"-->
+<!--                    android:layout_weight="0.1"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:src="@drawable/doted_circle_small"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/searchResultCertificate"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:text="U/A"-->
+<!--                    android:layout_marginLeft="8dp"-->
+<!--                    android:fontFamily="@font/sf_pro_text_medium"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:textColor="@color/app_theme_yellow_color"-->
+<!--                    android:textSize="14sp"/>-->
+<!--            </LinearLayout>-->
+
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:layout_marginLeft="8dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <TextView-->
+<!--                    android:id="@+id/searchResultVideo_type_1"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:text="Appe Teacher Collection"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:layout_margin="2dp"-->
+<!--                    android:fontFamily="@font/sf_pro_text_medium"-->
+<!--                    android:textColor="@color/app_theme_yellow_color"-->
+<!--                    android:textSize="12sp"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="1dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginStart="1dp"-->
+<!--                    android:layout_weight="0.1"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:src="@drawable/doted_circle_small"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/searchResultVideo_type_2"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_margin="2dp"-->
+<!--                    android:layout_marginLeft="8dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Comedy"-->
+<!--                    android:fontFamily="@font/sf_pro_text_medium"-->
+<!--                    android:textColor="@color/app_theme_yellow_color"-->
+<!--                    android:textSize="12sp"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="1dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginStart="1dp"-->
+<!--                    android:layout_weight="0.1"-->
+<!--                    android:layout_marginLeft="5dp"-->
+<!--                    android:src="@drawable/doted_circle_small"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/searchResultVideo_type_3"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:text="Drama"-->
+<!--                    android:layout_marginLeft="8dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:layout_margin="2dp"-->
+<!--                    android:fontFamily="@font/sf_pro_text_medium"-->
+<!--                    android:textColor="@color/app_theme_yellow_color"-->
+<!--                    android:textSize="12sp"/>-->
+<!--            </LinearLayout>-->
+
+
+
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+
+
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/app_bg_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+    >
+
+
+        <ImageView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/searchImage"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:scaleType="fitXY"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/app_logo" />
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchImage"
+            android:id="@+id/tvTitle"
+            android:text="Garva"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/sf_pro_text_bold"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchImage"
+            android:id="@+id/tvTalkies_gold"
+            android:text="TalkiesGold"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/sf_pro_text_bold"
+            android:layout_marginEnd="5dp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+            android:id="@+id/tvTulu"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/sf_pro_text_bold"
+            android:text="Tulu"
+            android:textColor="@color/yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTulu"
+            android:id="@+id/tvAction"
+            android:text="Action"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/sf_pro_text_bold"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--</LinearLayout>-->

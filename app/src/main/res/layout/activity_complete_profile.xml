@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
+    android:gravity="center"
+    android:padding="@dimen/margin_medium">
+
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_made_in_india"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:text="@string/made_in_india"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view3"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintStart_toStartOf="@+id/view3" />
+
+    <ImageView
+        android:id="@+id/imageView_back_otp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:src="@drawable/ic_action_back"
+        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="@+id/view3"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imageView_info"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="@dimen/margin_medium"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintTop_toTopOf="@+id/view3"
+        app:srcCompat="@drawable/info"
+        tools:ignore="ContentDescription" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="0dp"
+        android:layout_height="380dp"
+        android:layout_margin="@dimen/margin_medium"
+        app:layout_constraintBottom_toTopOf="@+id/tv_made_in_india"
+        app:layout_constraintEnd_toEndOf="@+id/view3"
+        app:layout_constraintStart_toStartOf="@+id/view3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_back_otp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:fontFamily="@font/sf_pro_text_semibold"
+        android:textColor="@color/yellow"
+        android:text="@string/complete_profile"
+        app:layout_constraintEnd_toEndOf="@+id/view4"
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toTopOf="@+id/view4" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sf_pro_text_medium"
+        android:text="@string/please_enter_a_valid_name_and_email_address_as_this_will_be_used_to_send_invoices_we_promise_to_keep_you_personal_information_100_secure_we_will_never_share_these_details_with_anyone"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/view4"
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/editTextFullNameCompleteProfile"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bt_hight"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_edt_text"
+        android:fontFamily="@font/sf_pro_text_medium"
+        android:hint="@string/full_name"
+        android:inputType="textPersonName"
+        android:maxLength="10"
+        android:paddingStart="@dimen/margin_medium"
+        android:paddingEnd="1dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/textColor_light_grey"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/view4"
+        app:layout_constraintStart_toStartOf="@+id/view4"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:importantForAutofill="no" />
+
+
+    <EditText
+        android:id="@+id/editTextEmailCompleteProfile"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_edt_text"
+        android:fontFamily="@font/sf_pro_text_medium"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress"
+        android:paddingStart="@dimen/margin_medium"
+        android:paddingEnd="2dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/textColor_light_grey"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/editTextFullNameCompleteProfile"
+        app:layout_constraintStart_toStartOf="@+id/editTextFullNameCompleteProfile"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFullNameCompleteProfile"
+        android:importantForAutofill="no" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonCompleteProfile"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/bt_hight"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/round_button_yellow"
+        android:fontFamily="@font/sf_pro_text_medium"
+        android:padding="12dp"
+        android:text="@string/complete_profile"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/editTextEmailCompleteProfile"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmailCompleteProfile"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmailCompleteProfile" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

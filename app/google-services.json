@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "791967465283",
+    "project_id": "talkies-bf5a2",
+    "storage_bucket": "talkies-bf5a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791967465283:android:150069054a8cefff9979f6",
+        "android_client_info": {
+          "package_name": "com.talkies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "791967465283-68k327rm5lg5skveko7s6mbmvieanhka.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.talkies",
+            "certificate_hash": "fb5e762de26810c5740b3f2eab3274d67f80905e"
+          }
+        },
+        {
+          "client_id": "791967465283-2449ftthtfe74mi1ce9t4fj2dase85o7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBey8Us_8Y-JQYwDMvTVhMNSNqiUL5WOiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "791967465283-2449ftthtfe74mi1ce9t4fj2dase85o7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

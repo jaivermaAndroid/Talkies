@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".activities.ResetPinActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/textColor_light_grey"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txt_Help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forgot Pin"
+            android:textSize="16sp"
+            android:textColor="@color/app_theme_yellow_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="20dp"
+        android:id="@+id/cons_signupUi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/tv_made_in_india"
+        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+
+        <TextView
+            android:id="@+id/tv_title_welcome4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Please Enter the OTP you recieved on your phone and set your new PIN"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons_phone_ui"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_high"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title_welcome4"
+            app:layout_constraintStart_toStartOf="@+id/tv_title_welcome4"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_welcome4">
+
+
+            <EditText
+                android:id="@+id/otp"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/bt_hight"
+                android:layout_marginTop="@dimen/margin_high"
+                android:autofillHints="dsfsdfsds"
+                android:background="@drawable/curv_background"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:hint="Enter Otp"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="1dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/newPin"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/bt_hight"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:autofillHints="dsfsdfsds"
+                android:background="@drawable/curv_background"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:hint="New Pin"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="1dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otp" />
+
+            <EditText
+                android:id="@+id/reOtp"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/bt_hight"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:autofillHints="dsfsdfsds"
+                android:background="@drawable/curv_background"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:hint="Re-enter PIN"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="1dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/newPin"
+                app:layout_constraintStart_toStartOf="@+id/newPin"
+                app:layout_constraintTop_toBottomOf="@+id/newPin" />
+
+            <TextView
+                app:layout_constraintStart_toStartOf="@+id/reOtp"
+                app:layout_constraintEnd_toEndOf="@+id/reOtp"
+                android:layout_marginTop="@dimen/margin_medium"
+                app:layout_constraintTop_toBottomOf="@+id/reOtp"
+                android:textColor="@color/textColor_light_grey"
+                android:textSize="14sp"
+                android:fontFamily="@font/sf_pro_text_regular"
+                android:text="> Enter 6 Digit PIN"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonReset"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bt_hight"
+            android:layout_marginTop="@dimen/margin_high"
+            android:background="@color/app_theme_yellow_color"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="Submit"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/cons_phone_ui"
+            app:layout_constraintStart_toStartOf="@+id/cons_phone_ui"
+            app:layout_constraintTop_toBottomOf="@+id/cons_phone_ui" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/tv_made_in_india"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/india"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cons_signupUi"
+        app:layout_constraintStart_toStartOf="@+id/cons_signupUi" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ui"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView_info"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginEnd="5dp"
+                    app:layout_constraintRight_toLeftOf="@+id/txt_Help"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/info"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/txt_Help"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/help"
+                    android:textColor="@color/app_theme_yellow_color"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="@dimen/margin_high"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView_logo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:srcCompat="@drawable/app_logo"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/margin_high"
+                    android:fontFamily="@font/sf_pro_text_medium"
+                    android:text="@string/swayam_prabha_entertainment_amp_productions"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/country_code_picker"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edt_hight"
+                    android:layout_marginTop="@dimen/margin_high"
+                    android:background="@drawable/bg_edt_text"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/sf_pro_text_medium"
+                    app:ccpDialog_searchEditTextTint="@color/white"
+                    app:ccpDialog_textColor="@color/white"
+                    app:ccp_contentColor="@color/white"
+                    app:ccp_hintExampleNumber="true"
+                    app:ccp_showFlag="false"
+                    app:ccp_showFullName="true">
+
+                </com.hbb20.CountryCodePicker>
+
+                <EditText
+                    android:id="@+id/editTextPhoneLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edt_hight"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:background="@drawable/bg_edt_text"
+                    android:fontFamily="@font/sf_pro_text_medium"
+                    android:hint="@string/enter_mobile_number"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="1dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/textColor_light_grey" />
+
+                <EditText
+                    android:id="@+id/editTextPIN"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edt_hight"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:background="@drawable/bg_edt_text"
+                    android:fontFamily="@font/sf_pro_text_medium"
+                    android:hint="@string/enter_pin"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="1dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/textColor_light_grey"
+                    android:visibility="visible"
+                    tools:ignore="TextFields" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bt_hight"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_bg_normal"
+                    android:fontFamily="@font/sf_pro_text_medium"
+                    android:text="@string/login"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_forgot_pin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:fontFamily="@font/sf_pro_text_medium"
+                    android:gravity="start"
+                    android:text="@string/forgot_pin"
+                    android:textColor="@color/app_theme_yellow_color"
+                    android:textStyle="italic" />
+
+
+                <TextView
+                    android:id="@+id/tv_or"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:fontFamily="@font/sf_pro_text_medium"
+                    android:gravity="center"
+                    android:text="@string/or"
+                    android:textColor="@color/white" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bt_hight"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:background="@color/app_theme_yellow_color">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/buttonLoginWithOption"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:background="@color/black"
+                        android:fontFamily="@font/sf_pro_text_bold"
+                        android:text="@string/login_with_otp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/app_theme_yellow_color"
+                        android:textSize="16sp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_weight="0.2"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_dont_have_account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/sf_pro_text_medium"
+                        android:text="@string/don_t_account"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_signup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/sf_pro_text_medium"
+                        android:onClick="onClick"
+                        android:text="@string/sign_up"
+                        android:textAlignment="center"
+                        android:textColor="@color/app_theme_yellow_color"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tv_made_in_india"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center|bottom"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:text="@string/made_in_india"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:padding="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cons_Help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView_info"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintRight_toLeftOf="@+id/txt_Help"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/info"
+            tools:ignore="ContentDescription,RtlHardcoded" />
+
+        <TextView
+            android:id="@+id/txt_Help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/help"
+            android:textColor="@color/app_theme_yellow_color"
+            android:visibility="visible"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cons_signupUi"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_centerVertical="true"
+        app:layout_constraintBottom_toTopOf="@+id/tv_made_in_india"
+        app:layout_constraintEnd_toEndOf="@+id/cons_Help"
+        app:layout_constraintStart_toStartOf="@+id/cons_Help"
+        app:layout_constraintTop_toBottomOf="@+id/cons_Help">
+
+
+        <ImageView
+            android:id="@+id/imageView_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/margin_high"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/app_logo"
+            tools:ignore="ContentDescription" />
+
+
+        <TextView
+            android:id="@+id/tv_title_welcome4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_high"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="@string/swayam"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView_logo"
+            app:layout_constraintStart_toStartOf="@+id/imageView_logo"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_logo" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cons_phone_ui"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_high"
+            app:layout_constraintEnd_toEndOf="@+id/tv_title_welcome4"
+            app:layout_constraintStart_toStartOf="@+id/tv_title_welcome4"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_welcome4">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/country_code_picker"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/curv_background"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:gravity="center_vertical|center_horizontal"
+                app:ccpDialog_searchEditTextTint="@color/white"
+                app:ccpDialog_textColor="@color/white"
+                app:ccp_contentColor="@color/white"
+                app:ccp_hintExampleNumber="true"
+                app:ccp_showFlag="false"
+                app:ccp_showNameCode="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextPhoneSignUp"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/bt_hight"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:autofillHints="dsfsdfsds"
+                android:background="@drawable/curv_background"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:hint="@string/mnumber"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:paddingStart="@dimen/margin_medium"
+                android:paddingEnd="1dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/country_code_picker"
+                app:layout_constraintStart_toStartOf="@+id/country_code_picker"
+                app:layout_constraintTop_toBottomOf="@+id/country_code_picker" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonSignup"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bt_hight"
+            android:layout_marginTop="@dimen/margin_high"
+            android:background="@color/app_theme_yellow_color"
+            android:fontFamily="@font/sf_pro_text_medium"
+            android:text="@string/sign_up"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/cons_phone_ui"
+            app:layout_constraintStart_toStartOf="@+id/cons_phone_ui"
+            app:layout_constraintTop_toBottomOf="@+id/cons_phone_ui" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_high"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="@+id/buttonSignup"
+            app:layout_constraintTop_toBottomOf="@+id/buttonSignup">
+
+            <TextView
+                android:id="@+id/tv_dont_have_account"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:text="@string/don_t_account"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sf_pro_text_medium"
+                android:text="@string/log_in"
+                android:textAlignment="center"
+                android:textColor="@color/app_theme_yellow_color"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/tv_made_in_india"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/india"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cons_signupUi"
+        app:layout_constraintStart_toStartOf="@+id/cons_signupUi" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
