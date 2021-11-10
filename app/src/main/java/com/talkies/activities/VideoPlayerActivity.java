@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.CookieManager;
 import android.webkit.URLUtil;
@@ -41,9 +42,18 @@ import androidx.core.view.MenuItemCompat;
 import androidx.mediarouter.app.MediaRouteButton;
 import androidx.mediarouter.media.MediaRouteSelector;
 import androidx.mediarouter.media.MediaRouter;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
@@ -89,23 +99,35 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 import com.talkies.R;
+import com.talkies.adapters.NewSeriesAdapter;
 import com.talkies.adapters.RecyclerCrewMemberAdapter;
 import com.talkies.adapters.RecyclerStaringAdapter;
+import com.talkies.adapters.SeasonAdapter;
 import com.talkies.callbacks.MainActivityCallBack;
 import com.talkies.managers.MainActivityManager;
+import com.talkies.model.Header;
+import com.talkies.model.SeriesModel;
+import com.talkies.model.ShowModel;
 import com.talkies.model.UserDetails;
 import com.talkies.model.searchitem.SearchDeatils;
+import com.talkies.utils.AppURLs;
 import com.talkies.utils.CustomDialogClass;
 import com.talkies.utils.GeneralMethods;
 import com.talkies.utils.MyPreferenceManager;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.net.CookieHandler;
 import java.net.CookiePolicy;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import io.paperdb.Paper;
 import kotlin.jvm.internal.Intrinsics;
@@ -124,12 +146,14 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
     private boolean mVideoIsLoaded;
     private boolean mIsPlaying;
     private CastPlayer castPlayer;
-    private SimpleExoPlayer Splayer;
+    String castTitle, type, slug, pid, type_;
+
+    ArrayList<ShowModel> itemCategoryArrayList = new ArrayList<>();
+
 
 
     private ExtractorsFactory extractorsFactory;
     private DefaultTrackSelector defaultTrackSelector;
-
 
 
     private static final String PLAYBACK_TIME = "play_time";
@@ -142,19 +166,21 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
     Gson gson;
     String searchItemSlug;
     ImageView mImageBanner;
-    TextView mItemTitle, mItemViewCount, mShortDescription, mSearchResultYear, mItemCategoryType1, mItemCategoryType2, mDetailCategoryDurationSearch, searchResultTypeIconSearch;
+    TextView mItemTitle, mItemViewCount, mShortDescription, mSearchResultYear, mItemCategoryType1, mItemCategoryType2, mDetailCategoryDurationSearch, searchResultTypeIconSearch, textHeader;
     Button mButtonStartWatching, mButtonWatchingTrailer;
     MediaRouteButton mButtonConnectTv;
-    RecyclerView mStarCastList, mCreMembers;
+    RecyclerView mStarCastList, mCreMembers, recycler_season;
     RecyclerCrewMemberAdapter recyclerCrewMemberAdapter;
     RecyclerStaringAdapter recyclerStaringAdapter;
+    SeasonAdapter seasonAdapter;
+    NewSeriesAdapter seriesAdapter;
     MainActivityCallBack mainActivityCallBack;
     GeneralMethods mGeneralMethods;
     View viewMoreDetails, viewCrew;
     TextView mCastCrewButton, mMoreDetailsButton;
     LinearLayout mCrewLayout, mMoreLayout, subscribeLayout;
     String trailerLink;
-    String mediaURL, title,castUrl;
+    String mediaURL, title, castUrl;
     UserDetails storageUserDetails;
     MyPreferenceManager prefManager;
     SimpleExoPlayer player;
@@ -171,6 +197,7 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
     private HlsMediaSource hlsMediaSource;
     private ExtractorMediaSource extractorMediaSource;
     java.net.CookieManager cookieManager;
+    private List seasonList = new ArrayList<>();
 
 
     @Override
@@ -189,21 +216,23 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
         playerView = findViewById(R.id.player_view);
         fullscreenButton = findViewById(R.id.exo_fullscreen_icon);
         progressBar = findViewById(R.id.progress_player);
-        cookies=myPreferenceManager.getCookies();
-        cookieManager= new  java.net.CookieManager();
+        cookies = myPreferenceManager.getCookies();
+        cookieManager = new java.net.CookieManager();
+        type = getIntent().getStringExtra("type");
+        slug = getIntent().getStringExtra("slug");
+
+
+        Log.d("zzz", "type:  " + type);
+
 
         cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
 
 
-
-
-
-        if (CookieHandler.getDefault() != cookieManager)
-        {
+        if (CookieHandler.getDefault() != cookieManager) {
             CookieHandler.setDefault(cookieManager);
         }
 
-        Log.d("zzz","cookies:    "+cookies);
+        Log.d("zzz", "cookies:    " + cookies);
 
 
         if (savedInstanceState != null) {
@@ -226,6 +255,8 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
         mItemViewCount = findViewById(R.id.viewCount);
         mStarCastList = findViewById(R.id.starCastList);
         mCreMembers = findViewById(R.id.crewMemberList);
+        recycler_season = findViewById(R.id.recycler_season);
+        textHeader = findViewById(R.id.textHeader);
 //        mVideoView = findViewById(R.id.videoview);
         mBufferingTextView = findViewById(R.id.buffering_textview);
         mBufferingTextView.setVisibility(View.GONE);
@@ -233,8 +264,8 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
             mCurrentPosition = savedInstanceState.getInt(PLAYBACK_TIME);
         }
         subscribeLayout = findViewById(R.id.subscriptionLayout);
-        viewMoreDetails = findViewById(R.id.moreDetailsView);
-        viewCrew = findViewById(R.id.castAndCrewView);
+//        viewMoreDetails = findViewById(R.id.moreDetailsView);
+//        viewCrew = findViewById(R.id.castAndCrewView);
         mCastCrewButton = findViewById(R.id.castAndCrewButton);
         mMoreDetailsButton = findViewById(R.id.viewMoreButton);
         mMoreLayout = findViewById(R.id.more_item_details);
@@ -267,14 +298,8 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
         });
         mButtonStartWatching.setOnClickListener(v -> {
             if (mediaURL != null) {
-
-
-//                mVideoView.setVideoPath(mediaURL);
                 Log.d("videourl", "videolink " + mediaURL);
                 ExoPlayer(mediaURL);
-//                mVideoView.start();
-//                mVideoView.setVisibility(View.VISIBLE);
-                //subscribeLayout.setVisibility(View.GONE);
                 mImageBanner.setVisibility(View.GONE);
             } else {
                 CustomDialogClass cdd = new CustomDialogClass(VideoPlayerActivity.this);
@@ -285,40 +310,22 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
 
 //        initMediaRouter();
         mButtonConnectTv.setOnClickListener(this::onClick);
-        CastButtonFactory.setUpMediaRouteButton(this,mButtonConnectTv);
-
-
-
+        CastButtonFactory.setUpMediaRouteButton(this, mButtonConnectTv);
 
 
     }
 
-
-//    private void hideSystemUi() {
-//        epvVideo.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-//                || View.SYSTEM_UI_FLAG_FULLSCREEN
-//                || View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-//                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-//                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
-//    }
-
-    private void initPlayer()
-    {
-//        defaultTrackSelector=new DefaultTrackSelector();
-
-//        hlsMediaSource = new HlsMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mediaURL));
+    private void initPlayer(String mediaURL) {
 
 
-//        player = ExoPlayerFactory.newSimpleInstance(this, defaultTrackSelector);
-//        player = ExoPlayerFactory.newSimpleInstance(this);
-//
-//        playerView.setPlayer(player);
         castPlayer = new CastPlayer(CastContext.getSharedInstance(this));
+
         castPlayer.setSessionAvailabilityListener(new SessionAvailabilityListener() {
             @Override
             public void onCastSessionAvailable() {
-                castPlayer.loadItem(buildMediaQueueItem(mediaURL),0);
+
+
+                castPlayer.loadItem(buildMediaQueueItem(VideoPlayerActivity.this.mediaURL), 0);
             }
 
             @Override
@@ -330,31 +337,25 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
 
 
 //        Uri uri = Uri.parse(mediaURL);
-        Uri uri = Uri.parse("http://51.81.245.228:6421/fastway/live14/index.m3u8");
 
-//        hlsMediaSource = new HlsMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mediaURL));
-//        player.prepare(hlsMediaSource);
-//        player.setPlayWhenReady(true);
-
-
-        DefaultHttpDataSourceFactory httpDataSourceFactory = new DefaultHttpDataSourceFactory(Util.getUserAgent((Context)this, "exoplayer"));
-        DefaultHlsDataSourceFactory hlsDataSourceFactory = new DefaultHlsDataSourceFactory((DataSource.Factory)httpDataSourceFactory);
-        com.google.android.exoplayer2.source.hls.HlsMediaSource.Factory hlsMediaSourceFactory = new com.google.android.exoplayer2.source.hls.HlsMediaSource.Factory((HlsDataSourceFactory)hlsDataSourceFactory);
-        HlsMediaSource hlsMediaSource = hlsMediaSourceFactory.createMediaSource(uri);
-        SimpleExoPlayer var16 = this.player;
-        if (var16 != null) {
-            var16.prepare((MediaSource)hlsMediaSource);
-        }
+//        DefaultHttpDataSourceFactory httpDataSourceFactory = new DefaultHttpDataSourceFactory(Util.getUserAgent((Context) this, "exoplayer"));
+//        DefaultHlsDataSourceFactory hlsDataSourceFactory = new DefaultHlsDataSourceFactory((DataSource.Factory) httpDataSourceFactory);
+//        com.google.android.exoplayer2.source.hls.HlsMediaSource.Factory hlsMediaSourceFactory = new com.google.android.exoplayer2.source.hls.HlsMediaSource.Factory((HlsDataSourceFactory) hlsDataSourceFactory);
+//        HlsMediaSource hlsMediaSource = hlsMediaSourceFactory.createMediaSource(uri);
+//        SimpleExoPlayer var16 = this.player;
+//        if (var16 != null) {
+//            var16.prepare((MediaSource) hlsMediaSource);
+//        }
+////
+//        var16 = this.player;
+//        if (var16 != null) {
+//            var16.setPlayWhenReady(true);
+//        }
 //
-        var16 = this.player;
-        if (var16 != null) {
-            var16.setPlayWhenReady(true);
-        }
-
-        var16 = this.player;
-        if (var16 != null) {
-            var16.seekTo(0L);
-        }
+//        var16 = this.player;
+//        if (var16 != null) {
+//            var16.seekTo(0L);
+//        }
     }
 
     private final DefaultTrackSelector.Parameters disableClosedCaptionParams() {
@@ -363,111 +364,28 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
 
     private final MediaQueueItem buildMediaQueueItem(String video) {
 
-
+        Map headers = new HashMap();
+        headers.put("Cookie", cookies);
         MediaMetadata movieMetadata = new MediaMetadata(1);
-        movieMetadata.putString("com.google.android.gms.cast.metadata.TITLE", "Talkies");
-        MediaInfo mediaInfo = (new MediaInfo.Builder(Uri.parse("http://51.81.245.228:6421/fastway/live14/index.m3u8").toString())).setStreamType(1).setContentType("application/x-mpegURL").setMetadata(movieMetadata).build();
+        movieMetadata.putString("com.google.android.gms.cast.metadata.TITLE", castTitle);
+        MediaInfo mediaInfo = (new MediaInfo.Builder(Uri.parse(video).toString(), cookies)).setStreamType(1).setContentType("application/x-mpegURL").setMetadata(movieMetadata).build();
+
         MediaQueueItem mediaQueueItem = (new com.google.android.gms.cast.MediaQueueItem.Builder(mediaInfo)).build();
+
         Intrinsics.checkExpressionValueIsNotNull(mediaQueueItem, "MediaQueueItem.Builder(mediaInfo).build()");
         return mediaQueueItem;
     }
 
 
-
-
-//    private void initMediaRouter() {
-//        // Configure Cast device discovery
-//        mMediaRouter = MediaRouter.getInstance( getApplicationContext() );
-//        mMediaRouteSelector = new MediaRouteSelector.Builder()
-//                .addControlCategory( CastMediaControlIntent.categoryForCast( getString( R.string.app_id ) ) )
-//                .build();
-//        mMediaRouterCallback = new MediaRouterCallback();
-//    }
-
-//    private void initCastClientListener() {
-//        mCastClientListener = new Cast.Listener() {
-//            @Override
-//            public void onApplicationStatusChanged() {
-//            }
-//
-//            @Override
-//            public void onVolumeChanged() {
-//            }
-//
-//            @Override
-//            public void onApplicationDisconnected( int statusCode ) {
-//                teardown();
-//            }
-//        };
-//    }
-
-
-//    private void initRemoteMediaPlayer() {
-//        mRemoteMediaPlayer = new RemoteMediaPlayer();
-//        mRemoteMediaPlayer.setOnStatusUpdatedListener( new RemoteMediaPlayer.OnStatusUpdatedListener() {
-//            @Override
-//            public void onStatusUpdated() {
-//                MediaStatus mediaStatus = mRemoteMediaPlayer.getMediaStatus();
-//                mIsPlaying = mediaStatus.getPlayerState() == MediaStatus.PLAYER_STATE_PLAYING;
-//            }
-//        });
-//
-//        mRemoteMediaPlayer.setOnMetadataUpdatedListener( new RemoteMediaPlayer.OnMetadataUpdatedListener() {
-//            @Override
-//            public void onMetadataUpdated() {
-//            }
-//        });
-//    }
-
-//    private void controlVideo() {
-//        if( mRemoteMediaPlayer == null || !mVideoIsLoaded )
-//            return;
-//
-//        if( mIsPlaying ) {
-//            mRemoteMediaPlayer.pause( mApiClient );
-////            mButton.setText( getString( R.string.resume_video ) );
-//        } else {
-//            mRemoteMediaPlayer.play( mApiClient );
-////            mButton.setText( getString( R.string.pause_video ) );
-//        }
-//    }
-
-//    private void startVideo() {
-//        MediaMetadata mediaMetadata = new MediaMetadata( MediaMetadata.MEDIA_TYPE_MOVIE );
-//        mediaMetadata.putString( MediaMetadata.KEY_TITLE, getString( R.string.video_title ) );
-//
-//        MediaInfo mediaInfo = new MediaInfo.Builder( getString( R.string.video_url ) )
-//                .setContentType( getString( R.string.content_type_mp4 ) )
-//                .setStreamType( MediaInfo.STREAM_TYPE_BUFFERED )
-//                .setMetadata( mediaMetadata )
-//                .build();
-//        try {
-//            mRemoteMediaPlayer.load( mApiClient, mediaInfo, true )
-//                    .setResultCallback( new ResultCallback<RemoteMediaPlayer.MediaChannelResult>() {
-//                        @Override
-//                        public void onResult( RemoteMediaPlayer.MediaChannelResult mediaChannelResult ) {
-//                            if( mediaChannelResult.getStatus().isSuccess() ) {
-//                                mVideoIsLoaded = true;
-////                                mButton.setText( getString( R.string.pause_video ) );
-//                            }
-//                        }
-//                    } );
-//        } catch( Exception e ) {
-//        }
-//    }
-
     @Override
     protected void onResume() {
         super.onResume();
-        if ((Util.SDK_INT <= 23 || player == null)) {
-            initPlayer();
-        }
+//        if ((Util.SDK_INT <= 23 || player == null)) {
+//            initPlayer();
+//        }
         // Start media router discovery
 //        mMediaRouter.addCallback( mMediaRouteSelector, mMediaRouterCallback, MediaRouter.CALLBACK_FLAG_PERFORM_ACTIVE_SCAN );
     }
-
-
-
 
 
     private void ExoPlayer(String mediaURL) {
@@ -507,7 +425,7 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
         playerView.setPlayer(player);
         playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FIXED_HEIGHT);
         dataSourceFactory = new DefaultHttpDataSourceFactory();
-        ((DefaultHttpDataSourceFactory) dataSourceFactory).setDefaultRequestProperty("Cookie",cookies);
+        ((DefaultHttpDataSourceFactory) dataSourceFactory).setDefaultRequestProperty("Cookie", cookies);
 
 
 //        Log.d("videourl", "videolink " + mediaURL);
@@ -517,8 +435,7 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
             hlsMediaSource = new HlsMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mediaURL));
             player.prepare(hlsMediaSource);
             player.setPlayWhenReady(true);
-        } else
-        {
+        } else {
             Log.d("zzz", "videolink  " + mediaURL);
 
             extractorMediaSource = new ExtractorMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(mediaURL));
@@ -656,15 +573,15 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
     }
 
     private void setMenuVisibilityCrewView() {
-        viewMoreDetails.setVisibility(View.GONE);
-        viewCrew.setVisibility(View.VISIBLE);
+//        viewMoreDetails.setVisibility(View.GONE);
+//        viewCrew.setVisibility(View.VISIBLE);
         mMoreLayout.setVisibility(View.GONE);
         mCrewLayout.setVisibility(View.VISIBLE);
     }
 
     private void setMenuVisibilityMoreView() {
-        viewMoreDetails.setVisibility(View.VISIBLE);
-        viewCrew.setVisibility(View.GONE);
+//        viewMoreDetails.setVisibility(View.VISIBLE);
+//        viewCrew.setVisibility(View.GONE);
         mCrewLayout.setVisibility(View.GONE);
         mMoreLayout.setVisibility(View.VISIBLE);
     }
@@ -680,173 +597,26 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
         super.onPause();
 //        player.setPlayWhenReady(false);
 
-            if ( isFinishing() ) {
-                // End media router discovery
-                mMediaRouter.removeCallback(mMediaRouterCallback);
-            }
+        if (isFinishing()) {
+            // End media router discovery
+//                mMediaRouter.removeCallback(mMediaRouterCallback);
+        }
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
 //            mVideoView.pause();
         }
     }
 
-
-//    private class MediaRouterCallback extends MediaRouter.Callback {
-//
-//        @Override
-//        public void onRouteSelected(MediaRouter router, MediaRouter.RouteInfo info) {
-//            initCastClientListener();
-//            initRemoteMediaPlayer();
-//
-//            mSelectedDevice = CastDevice.getFromBundle( info.getExtras() );
-//
-//            launchReceiver();
-//        }
-//
-//        @Override
-//        public void onRouteUnselected( MediaRouter router, MediaRouter.RouteInfo info ) {
-//            teardown();
-//            mSelectedDevice = null;
-////            mButton.setText( getString( R.string.play_video ) );
-//            mVideoIsLoaded = false;
-//        }
-//    }
-
-//    private void launchReceiver() {
-//        Cast.CastOptions.Builder apiOptionsBuilder = Cast.CastOptions
-//                .builder( mSelectedDevice, mCastClientListener );
-//
-//        ConnectionCallbacks mConnectionCallbacks = new ConnectionCallbacks();
-//        ConnectionFailedListener mConnectionFailedListener = new ConnectionFailedListener();
-//        mApiClient = new GoogleApiClient.Builder( this )
-//                .addApi( Cast.API, apiOptionsBuilder.build() )
-//                .addConnectionCallbacks( mConnectionCallbacks )
-//                .addOnConnectionFailedListener( mConnectionFailedListener )
-//                .build();
-//
-//        mApiClient.connect();
-//    }
-
     private void onClick(View v) {
         Log.d("zzz", "button clicked");
-
-//            CastButtonFactory.setUpMediaRouteButton(this,mButtonConnectTv);
-//        CastButtonFactory.setUpMediaRouteButton(this, mButtonConnectTv);
-
-//        initPlayer();
-//                    if( !mVideoIsLoaded ) {
-//
-//                        Log.d("zzz","start video");
-//
-//                        startVideo();
-//                    }
-//                    else
-//                    {
-//                        Log.d("zzz","control Video");
-//                        controlVideo();
-//                }
-
-
-//            Intent vd = new Intent(VideoPlayerActivity.this, ConnectTvActivity.class);
-//            startActivity(vd);
     }
 
-//    private class ConnectionCallbacks implements GoogleApiClient.ConnectionCallbacks {
-//
-//        @Override
-//        public void onConnected( Bundle hint ) {
-//            if( mWaitingForReconnect ) {
-//                mWaitingForReconnect = false;
-//                reconnectChannels( hint );
-//            } else {
-//                try {
-//                    Cast.CastApi.launchApplication( mApiClient, getString( R.string.app_id ), false )
-//                            .setResultCallback( new ResultCallback<Cast.ApplicationConnectionResult>() {
-//                                                    @Override
-//                                                    public void onResult(Cast.ApplicationConnectionResult applicationConnectionResult) {
-//                                                        Status status = applicationConnectionResult.getStatus();
-//                                                        if( status.isSuccess() ) {
-//                                                            //Values that can be useful for storing/logic
-//                                                            ApplicationMetadata applicationMetadata = applicationConnectionResult.getApplicationMetadata();
-//                                                            String sessionId = applicationConnectionResult.getSessionId();
-//                                                            String applicationStatus = applicationConnectionResult.getApplicationStatus();
-//                                                            boolean wasLaunched = applicationConnectionResult.getWasLaunched();
-//
-//                                                            mApplicationStarted = true;
-//                                                            reconnectChannels( null );
-//                                                        }
-//                                                    }
-//                                                }
-//                            );
-//                } catch ( Exception e ) {
-//
-//                }
-//            }
-//        }
-//
-//        @Override
-//        public void onConnectionSuspended(int i) {
-//            mWaitingForReconnect = true;
-//        }
-//    }
-
-//    private void reconnectChannels( Bundle hint ) {
-//        if( ( hint != null ) && hint.getBoolean( Cast.EXTRA_APP_NO_LONGER_RUNNING ) ) {
-//            //Log.e( TAG, "App is no longer running" );
-//            teardown();
-//        } else {
-//            try {
-//                Cast.CastApi.setMessageReceivedCallbacks( mApiClient, mRemoteMediaPlayer.getNamespace(), mRemoteMediaPlayer );
-//            } catch( IOException e ) {
-//                //Log.e( TAG, "Exception while creating media channel ", e );
-//            } catch( NullPointerException e ) {
-//                //Log.e( TAG, "Something wasn't reinitialized for reconnectChannels" );
-//            }
-//        }
-//    }
-//
-//    private class ConnectionFailedListener implements GoogleApiClient.OnConnectionFailedListener {
-//        @Override
-//        public void onConnectionFailed( ConnectionResult connectionResult ) {
-//            teardown();
-//        }
-//    }
-
-//    @Override
-//    public boolean onCreateOptionsMenu( Menu menu ) {
-//        super.onCreateOptionsMenu( menu );
-//        getMenuInflater().inflate( R.menu.main, menu );
-//        MenuItem mediaRouteMenuItem = menu.findItem( R.id.media_route_menu_item );
-//        MediaRouteActionProvider mediaRouteActionProvider = (MediaRouteActionProvider) MenuItemCompat.getActionProvider( mediaRouteMenuItem );
-//        mediaRouteActionProvider.setRouteSelector( mMediaRouteSelector );
-//        return true;
-//    }
-
-//    private void teardown() {
-//        if( mApiClient != null ) {
-//            if( mApplicationStarted ) {
-//                try {
-//                    Cast.CastApi.stopApplication( mApiClient );
-//                    if( mRemoteMediaPlayer != null ) {
-//                        Cast.CastApi.removeMessageReceivedCallbacks( mApiClient, mRemoteMediaPlayer.getNamespace() );
-//                        mRemoteMediaPlayer = null;
-//                    }
-//                } catch( IOException e ) {
-//                    //Log.e( TAG, "Exception while removing application " + e );
-//                }
-//                mApplicationStarted = false;
-//            }
-//            if( mApiClient.isConnected() )
-//                mApiClient.disconnect();
-//            mApiClient = null;
-//        }
-//        mSelectedDevice = null;
-//        mVideoIsLoaded = false;
-//    }
 
     @Override
     public void onDestroy() {
-        player.release();
+        if (player != null) {
+            player.release();
+        }
         super.onDestroy();
     }
 
@@ -862,65 +632,6 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
         super.onSaveInstanceState(outState);
 
 //        outState.putInt(PLAYBACK_TIME, mVideoView.getCurrentPosition());
-    }
-
-//    private void initializePlayer() {
-//        Uri videoUri = getMedia(VIDEO_SAMPLE);
-//        mVideoView.setVideoURI(videoUri);
-//
-//        mVideoView.setOnPreparedListener(
-//                new MediaPlayer.OnPreparedListener() {
-//                    @Override
-//                    public void onPrepared(MediaPlayer mediaPlayer) {
-//
-//                        // Hide buffering message.
-//                        mBufferingTextView.setVisibility(VideoView.INVISIBLE);
-//
-//                        // Restore saved position, if available.
-//                        if (mCurrentPosition > 0) {
-//                            mVideoView.seekTo(mCurrentPosition);
-//                        } else {
-//                            // Skipping to 1 shows the first frame of the video.
-//                            mVideoView.seekTo(1);
-//                        }
-//
-//                        // Start playing!
-//                        mVideoView.start();
-//                    }
-//                });
-//
-//        // Listener for onCompletion() event (runs after media has finished
-//        // playing).
-//        mVideoView.setOnCompletionListener(
-//                new MediaPlayer.OnCompletionListener() {
-//                    @Override
-//                    public void onCompletion(MediaPlayer mediaPlayer) {
-//
-//
-//                        // Return the video position to the start.
-//                        mVideoView.seekTo(0);
-//                    }
-//                });
-//    }
-
-
-    // Release all media-related resources. In a more complicated app this
-    // might involve unregistering listeners or releasing audio focus.
-//    private void releasePlayer() {
-//        mVideoView.stopPlayback();
-//    }
-
-    // Get a Uri for the media sample regardless of whether that sample is
-    // embedded in the app resources or available on the internet.
-    private Uri getMedia(String mediaName) {
-        if (URLUtil.isValidUrl(mediaName)) {
-            // Media name is an external URL.
-            return Uri.parse(mediaName);
-        } else {
-            // Media name is a raw resource embedded in the app.
-            return Uri.parse("android.resource://" + getPackageName() +
-                    "/raw/" + mediaName);
-        }
     }
 
 
@@ -971,8 +682,25 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
         SearchDeatils searchItem = gson.fromJson(result.toString(), collectionType);
         Log.e("rental: ", searchItem.toString());
         mItemTitle.setText(searchItem.getTitle());
+        castTitle = searchItem.getTitle();
+        castUrl = (String) searchItem.getChromecastMediaUrl();
+
+
+        if (type.equals("series")) {
+            textHeader.setVisibility(View.VISIBLE);
+            mStarCastList.setVisibility(View.GONE);
+            mCreMembers.setVisibility(View.GONE);
+        } else {
+            textHeader.setVisibility(View.GONE);
+            recycler_season.setVisibility(View.GONE);
+            mStarCastList.setVisibility(View.VISIBLE);
+            mCreMembers.setVisibility(View.VISIBLE);
+        }
+
+        Log.d("zzz", "Cast Url:  " + castUrl);
+
         mItemViewCount.setText(searchItem.getViewsCount().toString());
-        mShortDescription.setText(searchItem.getShortDescription());
+//        mShortDescription.setText(searchItem.getShortDescription());
         if (searchItem.getRunTime() != null) {
             mDetailCategoryDurationSearch.setText(searchItem.getRunTime().toString());
 
@@ -1000,10 +728,10 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
 
         trailerLink = searchItem.getTrailerLink();
         mediaURL = searchItem.getMediaUrl();
-        castUrl= (String) searchItem.getChromecastMediaUrl();
+        castUrl = (String) searchItem.getChromecastMediaUrl();
 
 
-        Log.d("zzz","cast url"+castUrl);
+        Log.d("zzz", "cast url" + castUrl);
 
 //        ExoPlayer(mediaURL);
 
@@ -1023,6 +751,22 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
         mStarCastList.setNestedScrollingEnabled(true);
         mStarCastList.setAdapter(recyclerStaringAdapter);
         recyclerStaringAdapter.notifyDataSetChanged();
+
+        seriesAdapter = new NewSeriesAdapter(getApplicationContext(), itemCategoryArrayList);
+        RecyclerView.LayoutManager seasonManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
+        recycler_season.setLayoutManager(seasonManager);
+        recycler_season.setHasFixedSize(false);
+        recycler_season.setNestedScrollingEnabled(true);
+//        recycler_season.setAdapter(seriesAdapter);
+//        recycler_season.setItemAnimator(new DefaultItemAnimator());
+        seriesAdapter.notifyDataSetChanged();
+
+
+        load_Data(slug);
+
+        if ((Util.SDK_INT <= 23 || player == null)) {
+            initPlayer(mediaURL);
+        }
 
     }
 
@@ -1106,4 +850,182 @@ public class VideoPlayerActivity extends AppCompatActivity implements MainActivi
         }
     }
 
+
+    void load_Data(String slug) {
+        StringRequest request = new StringRequest(Request.Method.GET, AppURLs.BASE_URL + "media/" + slug + "/", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("zzz", "VideoPlayerActivity:   " + response);
+                if (!response.equals(null)) {
+//                    ArrayList<SeriesModel> itemCategoryArrayList = new ArrayList<>();
+//                    seasonAdapter = new SeasonAdapter(getApplicationContext(), itemCategoryArrayList);
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        SeriesModel seriesModel = new SeriesModel();
+                        seriesModel.setTitle(jsonObject.getString("title"));
+
+                        JSONArray jsonArray_sub_media_list = jsonObject.getJSONArray("sub_media_list");
+                        if (jsonArray_sub_media_list.length() >= 0) {
+
+                            for (int i = 0; i < jsonArray_sub_media_list.length(); i++) {
+                                JSONObject jsonObject_subMediaList = jsonArray_sub_media_list.getJSONObject(i);
+                                Log.d("zzz", "title:   " + jsonObject.getString("title"));
+                                Log.d("bb", "banner    :   " + jsonObject_subMediaList.getString("banner"));
+                                pid = jsonObject.getString("pid");
+                                Log.d("fff", "Pid:    " + jsonObject.getString("pid"));
+                                JSONObject jsonObjectvideo_section_type = jsonObject.getJSONObject("video_section_type");
+                                type_ = jsonObjectvideo_section_type.getString("slug");
+//                                itemCategoryArrayList.add(seriesModel);
+                            }
+//                            recycler_season.setItemAnimator(new DefaultItemAnimator());
+//                            recycler_season.setAdapter(seasonAdapter);
+//                            seasonAdapter.notifyDataSetChanged();
+                            load_episode(type,pid);
+
+
+                        } else {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Nothing to show",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+//                            HomeActivity.progressBar.visibility = View.GONE
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    Log.e("Your Array Response", "Data Null");
+                }
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }) {
+
+            //This is for Headers If You Needed
+            @Override
+            public Map getHeaders() throws AuthFailureError {
+                HashMap headers = new HashMap();
+                headers.put("Content-Type", "application/json");
+                headers.put("Cookie", cookies.toString());
+                return headers;
+            }
+
+            //Pass Your Parameters here
+//            @Override
+//            protected Map<String, String> getParams() {
+//                Map<String, String> params = new HashMap<String, String>();
+//                params.put("User", UserName);
+//                params.put("Pass", PassWord);
+//                return params;
+//            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        queue.add(request);
+    }
+
+    void load_episode(String type,String pid) {
+        StringRequest request = new StringRequest(Request.Method.GET, AppURLs.BASE_URL + "media/list/?video_section_type="+type+"&pid="+pid+"&page=1", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("zzz","VideoPlayerActivity: Episodes   "+ response);
+                    try {
+                        JSONObject jsonObject0 = new JSONObject(response);
+                        JSONArray jsonArraysResult = jsonObject0.getJSONArray("results");
+                        for (int i = 0; i < jsonArraysResult.length(); i++) {
+                            JSONObject jsonObject = jsonArraysResult.getJSONObject(i);
+                            ShowModel showModel = new ShowModel();
+                            showModel.setTitle(jsonObject.getString("title"));
+
+
+                            if (jsonObject.has("genres")) {
+                                JSONArray jsonArrayGen = jsonObject.getJSONArray("genres");
+                                for (int j = 0; j < 1; j++) {
+
+
+                                }
+                            }
+                            JSONArray jsonArray_certificates = jsonObject.getJSONArray("certificates");
+                            for (int k=0; k<jsonArray_certificates.length();k++) {
+                                JSONObject jsonObjectjsonArrayGen_certificates = jsonArray_certificates.getJSONObject(k);
+//                                HomeActivity.gridtvUa.setText(jsonObjectjsonArrayGen_certificates.getString("title"))
+                            }
+                            JSONArray jsonArray_sub_media_list = jsonObject.getJSONArray("sub_media_list");
+                            if (jsonArray_sub_media_list.length()>0) {
+                                for (int l = 0; l < jsonArray_sub_media_list.length(); l++) {
+
+                                    Log.d("ccc","loop Called");
+                                    JSONObject jsonObject_subMediaList = jsonArray_sub_media_list.getJSONObject(l);
+
+
+                                    showModel.setType("");
+                                    Log.d("zzz", "title: 111   " + jsonObject.getString("title"));
+
+                                    showModel.setSubmideaTitle(jsonObject_subMediaList.getString("title"));
+                                    showModel.setSubMediaBanner(jsonObject_subMediaList.getString("banner"));
+                                    showModel.setSubMideabigbanner(
+                                            jsonObject_subMediaList.getString("big_banner"));
+                                    showModel.setShort_Midea_description(
+                                            jsonObject_subMediaList.getString("short_description"));
+                                    showModel.setSubMideaslug( jsonObject_subMediaList.getString("slug"));
+                                    showModel.setSubmideaTitle(
+                                            jsonObject_subMediaList.getString("season_title"));
+                                    showModel.setRun_time("N/A");
+//                                    showModel.subMideaslug = jsonObject.getString("slug")
+//                                    HomeActivity.gridtvTime.setText("\u2022"+" "+jsonObject.getString("run_time") + "min")
+//                                    HomeActivity.gridtvYear.setText(jsonObject.getString("release_year"))
+//                        HomeActivity.gridtvUa.text="\u2022"+" "
+                                    showModel.setRelease_year(jsonObject.getString("release_year"));
+                                    Log.d("fff", "Pid:    " + jsonObject.getString("pid"));
+                                    showModel.setEpisode_title(jsonObject_subMediaList.getString("episode_title"));
+
+
+
+                                }
+                                itemCategoryArrayList.add(showModel);
+
+                            }
+                            recycler_season.setAdapter(seriesAdapter);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }) {
+
+            //This is for Headers If You Needed
+            @Override
+            public Map getHeaders() throws AuthFailureError {
+                HashMap headers = new HashMap();
+                headers.put("Content-Type", "application/json");
+                headers.put("Cookie", cookies.toString());
+                return headers;
+            }
+
+            //Pass Your Parameters here
+//            @Override
+//            protected Map<String, String> getParams() {
+//                Map<String, String> params = new HashMap<String, String>();
+//                params.put("User", UserName);
+//                params.put("Pass", PassWord);
+//                return params;
+//            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        queue.add(request);
+    }
 }
+

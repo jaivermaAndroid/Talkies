@@ -115,7 +115,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/otp" />
 
             <EditText
-                android:id="@+id/reOtp"
+                android:id="@+id/reEnterPin"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/bt_hight"
                 android:layout_marginTop="@dimen/margin_medium"

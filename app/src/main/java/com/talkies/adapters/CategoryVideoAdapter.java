@@ -82,6 +82,7 @@ public class CategoryVideoAdapter extends RecyclerView.Adapter<CategoryVideoAdap
             @Override
             public void onClick(View v) {
                 moreListener.onMoreItemClickListener(recentTransactionModel.getSlug());
+
                 Log.d("getslug", "vieoindex "+recentTransactionModel.getSlug());
             }
         });

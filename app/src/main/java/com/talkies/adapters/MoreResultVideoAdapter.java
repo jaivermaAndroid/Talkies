@@ -2,6 +2,7 @@ package com.talkies.adapters;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.talkies.R;
+import com.talkies.activities.VideoPlayerActivity;
 import com.talkies.model.moredetails.MoreResult;
 import com.talkies.model.moredetails.Result;
 import com.talkies.model.searchResult.SearchResultResponseList;
@@ -92,12 +94,14 @@ public class MoreResultVideoAdapter extends RecyclerView.Adapter<MoreResultVideo
 
             Picasso.get().load(recentTransactionModel.getBanner()).into(holder.imageVideo);
             //Log.e("banner: ", recentTransactionModel.getMainTitle());
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                listener.onItemClick(recentTransactionModel);
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent vd = new Intent(mContext, VideoPlayerActivity.class);
+                vd.putExtra("slug", recentTransactionModel.getSlug());
+                mContext.startActivity(vd);
+            }
+        });
 
     }
 

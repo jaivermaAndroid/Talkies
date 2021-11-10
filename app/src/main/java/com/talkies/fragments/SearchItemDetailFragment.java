@@ -21,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.mediarouter.app.MediaRouteButton;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -70,7 +71,9 @@ public class SearchItemDetailFragment extends Fragment implements MainActivityCa
     SearchResultResponseList mSearchItem;
     ImageView mImageBanner;
     TextView mItemTitle, mItemViewCount, mShortDescription, mSearchResultYear, mItemCategoryType1, mItemCategoryType2, mDetailCategoryDurationSearch, searchResultTypeIconSearch;
-    Button mButtonStartWatching, mButtonConnectTv, mButtonWatchingTrailer;
+    Button mButtonStartWatching, mButtonWatchingTrailer;
+    MediaRouteButton mButtonConnectTv;
+
     RecyclerView mStarCastList, mCreMembers;
     RecyclerCrewMemberAdapter recyclerCrewMemberAdapter;
     RecyclerStaringAdapter recyclerStaringAdapter;
@@ -116,8 +119,8 @@ public class SearchItemDetailFragment extends Fragment implements MainActivityCa
         mStarCastList = view.findViewById(R.id.starCastList);
         mCreMembers = view.findViewById(R.id.crewMemberList);
 
-        viewMoreDetails = view.findViewById(R.id.moreDetailsView);
-        viewCrew = view.findViewById(R.id.castAndCrewView);
+//        viewMoreDetails = view.findViewById(R.id.moreDetailsView);
+//        viewCrew = view.findViewById(R.id.castAndCrewView);
 
         mCastCrewButton = view.findViewById(R.id.castAndCrewButton);
         mMoreDetailsButton = view.findViewById(R.id.viewMoreButton);

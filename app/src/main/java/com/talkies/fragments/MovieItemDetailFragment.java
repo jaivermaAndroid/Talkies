@@ -159,8 +159,8 @@ public class MovieItemDetailFragment extends Fragment implements MainActivityCal
         }
 
         subscribeLayout=view.findViewById(R.id.subscriptionLayout);
-        viewMoreDetails = view.findViewById(R.id.moreDetailsView);
-        viewCrew = view.findViewById(R.id.castAndCrewView);
+//        viewMoreDetails = view.findViewById(R.id.moreDetailsView);
+//        viewCrew = view.findViewById(R.id.castAndCrewView);
 
         mCastCrewButton = view.findViewById(R.id.castAndCrewButton);
         mMoreDetailsButton = view.findViewById(R.id.viewMoreButton);

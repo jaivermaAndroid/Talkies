@@ -31,6 +31,7 @@ import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 import com.talkies.R;
 import com.talkies.activities.VideoPlayerActivity;
+import com.talkies.activities.VideoPlayerActivity_2;
 import com.talkies.adapters.CategoryChildAdapter;
 import com.talkies.adapters.CategoryVideoAdapter;
 import com.talkies.adapters.ContinueWatchingAdapter;
@@ -334,9 +335,27 @@ public class TabHomeFragment extends Fragment implements View.OnClickListener, H
     @Override
     public void OnCategoryItemClickListener(Datum item) {
 
-        Intent vd = new Intent(getActivity(), VideoPlayerActivity.class);
-        vd.putExtra("slug", item.getSlug());
-        startActivity(vd);
+        Log.d("zzz","TabHomeFragment:    "+item.getVideoSectionType().getSlug());
+
+//        if (item.getVideoSectionType().getSlug().equals("series"))
+//        {
+//
+//            Intent vd = new Intent(mContext, VideoPlayerActivity_2.class);
+//            vd.putExtra("slug",item.getSlug());
+//            vd.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            getApplicationContext().startActivity(vd);
+//
+//        }
+//        else {
+            Intent vd = new Intent(getActivity(), VideoPlayerActivity.class);
+            vd.putExtra("slug", item.getSlug());
+            vd.putExtra("type", item.getVideoSectionType().getSlug());
+
+            vd.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(vd);
+//        }
+
+
     }
 
 

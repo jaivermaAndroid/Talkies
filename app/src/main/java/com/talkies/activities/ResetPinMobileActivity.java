@@ -55,30 +55,58 @@ public class ResetPinMobileActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+//                if (mobile.equals("") )
+//                {
+//
+//                    Toast.makeText(getApplicationContext(),"Mobile number cannot be empty",Toast.LENGTH_SHORT).show();
+//                }
+//                else
                 mobile = edMobileno.getText().toString();
-                ResetPin_2(mobile);
+                if (mobile.length() <10)
+                {
+                    Toast.makeText(getApplicationContext(),"Invalied mobile number",Toast.LENGTH_SHORT).show();
+                }
+                else {
+
+                ResetPin(mobile);
 //                sendDataToBackend();
-//                Intent intent = new Intent();
-//                intent = new Intent(getApplicationContext(),ResetPinActivity.class);
-//                intent.putExtra("monileno","mobile");
-//                startActivity(intent);
+
+                }
             }
         });
     }
 
 
-
-    private void ResetPin_2(String mobile) {
+    private void ResetPin(String mobile_) {
         try {
             JSONObject jsonBody = new JSONObject();
-            jsonBody.put("mobile_number", "9792318592");
-            jsonBody.put("password", "123456");
+            jsonBody.put("mobile_number", mobile_);
+//            jsonBody.put("password", "123456");
+
             final String requestBody = jsonBody.toString();
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURLs.BASE_URL + "auth/login/password/", new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, AppURLs.BASE_URL + "auth/password_reset/", new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                Log.d("zzz","Response:  "+response);
+                    Log.d("zzz","Response:  "+response);
+
+                    Toast.makeText(getApplicationContext(),"OTP sent to your registered mobile number",Toast.LENGTH_SHORT).show();
+                    try {
+                        JSONObject jsonObjecttoken=new JSONObject(response);
+                        Intent intent = new Intent(getApplicationContext(), ResetPinActivity.class);
+                        intent.putExtra("mobile_no", mobile);
+                        intent.putExtra("token", jsonObjecttoken.getString("auth_token"));
+
+                        Log.d("zzz","Mobile11:   "+mobile);
+                        startActivity(intent);
+                        finish();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+//                    Intent intent = new Intent();
+
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -107,4 +135,9 @@ public class ResetPinMobileActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+
+
+
+
 }
